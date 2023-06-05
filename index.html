@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDb Handson-1</title>
+</head>
+<body>
+   <h1>Handson-1</h1>
+    
+   
+    <h4>Q1 . Query the collection ""employee"" and list all the documents</h4>
+
+    <code>
+
+    db.employee.find().pretty()
+
+    </code>
+
+    <h4>Q2 . Query the collection ""employee"" and list the employees who are having salary more than 30000</h4>
+
+    <code>
+
+    db.employee.find({salary:{$gt:'30000'}}).pretty()
+
+    </code>
+
+    <h4>Q3 . Query the collection ""employee"" and list the employees who are having experience more than 2 years.</h4>
+    
+    <code>
+
+        db.employee.find({ overallExp: { $gt: "1" } }).pretty()
+
+
+    </code>
+    <h4>Q4 . Query the collection ""employee"" and list the employees who are graduated after 2015 and having experience more than 1 year</h4>
+    
+    <code>
+
+    db.employee.find({$and:[{yearGrad:{$gt:"2015"}},{overallExp:{$gt:1}}]}).pretty()
+    db.employee.find({
+        yearGrad: { $gt: "2015" },
+        overallExp: { $gt: "1" }
+      }).pretty()
+
+    </code>
+
+    <h4>Q5 . Query the collection ""employee"" and update the salary of the employee whose salary is greater than 70000 to 65000.</h4>
+    
+    <code>
+
+    db.employee.updateMany({salary:{$gt:70000}},{$set:{salary:65000}})
+    db.employee.find().pretty()
+
+    </code>
+    <h4>Q6 . Delete all the documents from ""employee"" where last company is Y</h4>
+
+    <code>
+
+    db.employee.deleteMany({last_company:"Y"})
+    db.employee.find().pretty()
+
+    </code>
+
+   
+
+   
+
+
+    
+</body>
+</html>
